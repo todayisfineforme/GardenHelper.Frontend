@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <title>Plan your Plot</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-dark bg-light topline">
+            <a class="navbar-brand ml-0" href="#"><h1>Garden Helper</h1></a>
+            <a class="navbar-brand mt-2" href="#"><i class="fas fa-seedling float-left mt-2 mr-2"></i><h3>Profile</h3></a>
+        </nav>
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron jumbotron-fluid m-3 rounded">
+                    <h1 class="display-3 text-center mt-n5">Plan your Plot!</h1>
+                    <hr class="mx-4">
+                    <div class="container">
+                        <form>
+                            <div class="form-row justify-content-center">
+                                <div class="form-check-inline">
+                                    <h3>How large is your plot?</h3>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="text" id="plotLength" name="plotLength" maxlength="5" size="3">
+                                </div>
+                                <div class="form-check-inline">
+                                    <h5>X</h5>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="text" id="plotWidth" name="plotWidth" maxlength="5" size="3">
+                                </div>
+                                <div class="form-check-inline">
+                                    <div class="input-group">
+                                        <select class="custom-select" id="areaUnits">
+                                            <option selected>Units</option>
+                                            <option value="1">Feet</option>
+                                            <option value="2">Yards</option>
+                                            <option value="3">Metres</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row justify-content-center">
+                                <div class="form-check-inline">
+                                   <h3>What do you want to plant?</h3> 
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                </div>
+                                <div class="form-check-inline">
+                                    <button type="button" class="btn btn-secondary">Look it up!</button>
+                                </div>
+                            </div>
+                            <div class="form-row justify-content-center">
+                                <div class="form-check-inline">
+                                    <h3>How many do you want to plant?</h3>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input type="text" id="numberOfPlants" name="numberOfPlants" maxlength="5" size="3">
+                                </div>
+                            </div>
+                            <div class="form-row justify-content-center">
+                                <div class="form-check-inline">
+                                    <button type="button" class="btn btn-secondary btn-lg btn-block">Add to Plot!</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
