@@ -1,0 +1,63 @@
+body {
+    background-image: url(background.jfif);
+    background-attachment: fixed;
+}
+
+.topline{
+    background-color: rgba(245, 245, 245, 0.3) !important
+}
+
+.navbar-brand{
+    opacity: 1.0;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.jumbotron{
+    background-color: rgba(245, 245, 245, 0.6) !important;
+}
+
+img {
+    opacity: 1.0 !important;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.card-body {
+    background-color: rgba(245, 245, 245, 1.0) !important;
+}
+
+table {
+    background-color: rgba(245, 245, 245, 1.0) !important;
+    width: 100%;
+    margin: 10px;
+}
+
+.notesTron {
+    background-color: rgba(245, 245, 245, 1.0) !important;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    width: fit-content;
+}
+
+.noteField {
+    width: fit-content;
+}
+
+.addEntry{
+    margin-top: 10px;
+}
+
+.form-row{
+    margin-bottom: 10px;
+}
+
+.icon-center{
+    display: block;
+    margin: auto;
+}
+
+.currentPlots{
+    padding: 16px;
+}
