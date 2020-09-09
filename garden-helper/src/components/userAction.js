@@ -15,7 +15,7 @@ const userAction = {
 
     signup:async function signUp(username, email, password) {
 
-        let url = "http://127.0.0.1:3000/user/signup";
+        let url = "http://127.0.0.1:3009/user/signup";
 
          await axios.post(url, {
             username: username,

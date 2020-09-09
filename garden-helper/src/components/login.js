@@ -43,7 +43,7 @@ class Login extends React.Component {
                     <input type="text" placeholder="email" id="email" name="" value={this.state.email} onChange={event => this.setEmail(event.target.value)} />
                 </div>
                 <div className="textbox">
-                    <input type="text" placeholder="Password" id="password" name="" value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
+                    <input type="password" placeholder="Password" id="password" name="" value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
                 </div>
                 <div className="custom-control custom-checkbox">
                     <input type="checkbox" className="custom-control-input" id="customCheck1" />
