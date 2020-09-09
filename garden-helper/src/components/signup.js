@@ -12,9 +12,11 @@ class Signup extends React.Component {
         }
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
-        userAction.Signup(this.state.username, this.state.email, this.state.password);
+        await userAction.signup(this.state.username, this.state.email, this.state.password);
+         window.location ='/login';
+        //navigate to login here
     }
     
     setUsername(username) {
@@ -53,7 +55,7 @@ class Signup extends React.Component {
                     <input type="text" placeholder="email" name="" id='email' value={this.state.email} onChange={event => this.setEmail(event.target.value)} />
                 </div>
                 <div className="textbox">
-                    <input type="text" placeholder="Password" name="" id='password' value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
+                    <input type="password" placeholder="Password" name="" id='password' value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={(event) => this.handleSubmit(event)}>submit</button>
                 <p className="forgot-password text-right">
