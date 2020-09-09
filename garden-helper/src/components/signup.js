@@ -17,26 +17,26 @@ class Signup extends React.Component {
         userAction.Signup(this.state.username, this.state.email, this.state.password);
     }
     
-    setUsername() {
+    setUsername(username) {
         let newState = {
-            username: this.state.username,
+            username: username,
             password: this.state.password
         }
         this.setState(newState);
     }
 
-    setEmail() {
+    setEmail(email) {
         let newState = {
-            email: this.state.email,
+            email: email,
             password: this.state.password
         }
         this.setState(newState);
     }
 
-    setPassword() {
+    setPassword(password) {
         let newState = {
             email: this.state.email,
-            password: this.state.password
+            password: password
         }
         this.setState(newState);
     }
