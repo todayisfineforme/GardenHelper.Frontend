@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '/header';
+
 
 class Header extends React.Component{
     render(){
@@ -7,12 +7,12 @@ class Header extends React.Component{
             <header>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-6 d-flex justify-content-end">
                         <div className="logo">
                            <a href="#">GARDEN BOOK</a>
                        </div>
                     </div>
-                        <div className="col-md-9">
+                        <div className="col-md-6 d-flex justify-content-end">
                             <div className="menubar">
                                 <ul>
                                     <li className="home"><a href="./index.html">HOME</a></li>
@@ -25,7 +25,6 @@ class Header extends React.Component{
                                         </div>
                                     <li className="article"><a href="#">ARTICLE</a></li>
                                     <li className="contact"><a href="#">CONTACT</a></li>
-                                    <li className="active"><a href="./login.html">LOGIN/SIGNUP</a></li>
                                 </ul>
                             </div>
                         </div>

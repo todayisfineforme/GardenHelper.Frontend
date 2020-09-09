@@ -5,7 +5,7 @@
   }
   
   header{
-      background-image: url(../gardening.jpg);
+      background-image: url(./images/gardening.jpg);
       height: 100vh;
       background-size: cover;
       background-position: center;
@@ -121,10 +121,4 @@
       font-size: 18px;
       cursor: pointer;
       margin: 12px 0;
-  }
-  
-  
-  
-  
-  
   }
