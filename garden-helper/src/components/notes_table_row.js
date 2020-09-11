@@ -1,9 +1,9 @@
 import React from "react";
 
 function notes_table_row(props) {
-    render(
+    return(
         <tr>
-            <th>{props.date}</th>
+            <td>{props.date}</td>
             <td>{props.watered}</td>
             <td>{props.fertilized}</td>
             <td>{props.fertilizer_used}</td>
