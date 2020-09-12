@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const search = {
-    search: async function login(query) {
+    search: async function search(query) {
        
         let url = "localhost:3009/api/search/" + query;
        
