@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import create_plot_form from "./create_plot_form";
 import create_plot_plant_table from "./create_plot_plant_table";
+import search from './search';
 
 class create_plot extends Component {
     constructor(props) {
@@ -10,8 +11,22 @@ class create_plot extends Component {
             email: '',
             password: '',
             available_rows: 0,
-            current_plants:[]
+            current_plants:[],
+            search_results = {},
+            query = ''
         }
+    }
+
+    async handleSearch(event) {
+        event.preventDefault();
+        this.state.search_results = await search.search(this.state.query);
+    }
+
+    setQuery(query) {
+        let newState = {
+            query: query
+        }
+        this.setState(newState);
     }
     render(){
         return(

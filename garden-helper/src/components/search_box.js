@@ -1,25 +1,6 @@
 import React from 'react';
-import search from './search';
 
 class searchResults extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: ''
-        }
-    }
-
-    handleSearch(event) {
-        event.preventDefault();
-        search.search(this.state.query);
-    }
-
-    setQuery(query) {
-        let newState = {
-            query: query
-        }
-        this.setState(newState);
-    }
 
     render() {
 
@@ -31,6 +12,7 @@ class searchResults extends React.Component {
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={(event) => this.handleLogin(event)}>Search</button>
             </div>
+            <result_card/>
             </div>
         )
     }
