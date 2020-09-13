@@ -1,63 +1,83 @@
 import React from 'react';
-import userAction from './userAction';
-import Header from './header';
+import AccountNavigation from './accountnavigation';
+import userAccount from './userAccount';
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            errorMessage: ''
         }
-    }
-
-    handleLogin(event) {
-        event.preventDefault();
-        userAction.login(this.state.email, this.state.password);
     }
 
     setEmail(email) {
-        let newState = {
-            email: email,
-            password: this.state.password
-        }
+        let newState = this.getCopyOfState();
+        newState.email = email;
         this.setState(newState);
     }
 
     setPassword(password) {
-        let newState = {
-            email: this.state.email,
-            password: password
-        }
+        let newState = this.getCopyOfState();
+        newState.password = password;
         this.setState(newState);
     }
 
-    render() {
+    getCopyOfState() {
+        return {
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
+            errorMessage: this.state.errorMessage
+        }
+    }
 
+
+    async handleSubmit(event) {
+        event.preventDefault();
+
+        try {
+            let response = await userAccount.login(this.state.email, this.state.password);
+            sessionStorage.setItem('userid', response.data.userid);
+            window.location = '/garden/new';
+        } catch (error) {
+            let newState = this.getCopyOfState();
+            newState.errorMessage = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;
+            this.setState(newState);
+        }
+    }
+
+    render() {
         return (
-            <div>
-                <Header/>
-                <div className="login-box">
-                    <h1>Login</h1>
-                    <div className="textbox">
-                        <input type="text" placeholder="email" id="email" name="" value={this.state.email} onChange={event => this.setEmail(event.target.value)} />
+            <div className="container-fliud h-100 hero-image hero-image2">
+                <AccountNavigation />
+                <div className="row h-100">
+                    <div className="col-md-4 col-xs-0"></div>
+                    <div className="col-md-4 col-xs-12 d-flex justify-content-center">
+                        <div className="card logincontainer w-100 overflow-auto d-flex useraccount">
+                            <div className="card-body">
+                                <h5 className="card-title text-white">Log In</h5>
+                                <form id="signup-form">
+                                    <div className="form-group">
+                                        <label className="text-white">Email</label>
+                                        <input type="text" id="email" className="form-control" value={this.state.email} onChange={(e) => this.setEmail(e.target.value)} />
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="text-white">Password</label>
+                                        <input type="password" id="password" className="form-control" value={this.state.password} onChange={(e) => this.setPassword(e.target.value)} />
+                                    </div>
+                                    <button type="submit" className="btn btn-secondary mt-4 mx-auto w-100" onClick={(e) => this.handleSubmit(e)}>Log in</button>
+                                </form>
+                                <div className="error my-4 mx-auto">
+                                    <span className="text-danger">{this.state.errorMessage}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="textbox">
-                        <input type="password" placeholder="Password" id="password" name="" value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
-                    </div>
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary btn-block" onClick={(event) => this.handleLogin(event)}>Submit</button>
-                    <p className="forgot-password text-left">
-                    please  register <a href="/login">sign in?</a>
-                    </p>
-                    <p className="forgot-password text-right">
-                        Forgot <a href="./signup">password?</a>
-                    </p>
+                    <div className="col-md-4 col-xs-0"></div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

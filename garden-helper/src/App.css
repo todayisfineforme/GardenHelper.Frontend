@@ -5,7 +5,13 @@
   }
   
   header{
-      background-image: url(./images/gardening.jpg);
+      background-image: url(./images/hero.jpg);
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+  }
+  .mainscreen{
+      background-image: url(./images/hero.jpg);
       height: 100vh;
       background-size: cover;
       background-position: center;
