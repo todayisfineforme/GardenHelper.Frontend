@@ -1,6 +1,6 @@
 import React from "react";
 
-function notes_table_row(props) {
+function Notes_table_row(props) {
     return(
         <tr>
             <td>{props.date}</td>
@@ -11,4 +11,4 @@ function notes_table_row(props) {
         </tr>
     )
 }
-export default notes_table_row;
+export default Notes_table_row;

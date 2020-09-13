@@ -1,6 +1,6 @@
 import React from 'react';
 
-function plot_detail_card(props){
+function PlotDetailCard(props){
     return(
         <div className="jumbotron jumbotron-fluid m-3 rounded">
             <h3 className="text-center mt-n5">Plot Details</h3>
@@ -18,4 +18,4 @@ function plot_detail_card(props){
     )
 }
 
-export default plot_detail_card;
+export default PlotDetailCard;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import result_card from "./result_card"
-import result_row from "./result_row";
+import ResultCard from "./result_card"
+import ResultRow from "./result_row";
 
-class result_container extends Component {
+class ResultContainer extends Component {
     
     render() {
         <div className="row">
@@ -10,16 +10,16 @@ class result_container extends Component {
                 <div className="jumbotron jumbotron-fluid m-3 rounded">
                     <hr className="mx-4"/>
                     <div className="container-fluid">
-                        <result_row/>
+                        <ResultRow/>
                         {/* todo logic to determine how many rows are displayed */}
                         <hr className="mx-4"/>
                     </div>
                 </div>
             </div>
             <div className="col-3">
-                <result_card/>
+                <ResultCard/>
             </div>
         </div>
     }
 }
-export default result_container;
+export default ResultContainer;

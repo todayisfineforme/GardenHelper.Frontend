@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import result_card from "./result_card"
+import ResultCard from "./result_card"
 
-function result_row() {
+function ResultRow() {
     return(
         <div className="row">
-          <result_card/>  
+          <ResultCard/>  
           {/* todo logic to determine how many plants to a row */}
         </div>
     );
 }
 
-export default result_row;
+export default ResultRow;

@@ -1,24 +1,24 @@
 import React from 'react';
 
-function add_note_form(props){
+function AddNoteForm(props){
     return(
         <div className="container-fluid">
             <div className="jumbotron notesTron">
                 <form>
-                    <h4>Add another Entry</h4>
+                    <h4 className="mb-4">Add another Entry</h4>
                     <div className="form-row">
                         <div className="form-check-inline">
                             <h5>Date:</h5>
                         </div>
                         <div className="form-check-inline">
-                            <input className="form-check-input" type="radio" name="dateSelect" id="dateToday" value="dateToday" checked/>
-                            <label className="form-check-label" for="dateToday">
+                            <input className="form-check-input" type="radio" name="dateSelect" id="dateToday" value="dateToday" defaultChecked/>
+                            <label className="form-check-label" htmlFor="dateToday">
                                 today: {props.current_date}
                             </label>
                         </div>
                         <div className="form-check-inline">
                             <input className="form-check-input" type="radio" name="dateSelect" id="pastDate" value="pastDate"/>
-                            <input type="text" id="pastDateInput" placeholder="Past Date"/>
+                            <input type="text" className="form-control" id="pastDateInput" placeholder="Past Date"/>
                         </div>
                     </div>
                     <div className="form-row">
@@ -27,11 +27,11 @@ function add_note_form(props){
                         </div>
                         <div className="form-check-inline">
                             <input className="form-check-input" type="radio" name="watered" id="wateredYes" value="wateredYes"/>
-                            <label className="form-check-label" for="wateredYes">yes</label>
+                            <label className="form-check-label" htmlFor="wateredYes">yes</label>
                         </div>
                         <div className="form-check-inline">
                             <input className="form-check-input" type="radio" name="watered" id="wateredNo" value="wateredNo"/>
-                            <label className="form-check-label" for="wateredNo">no</label>
+                            <label className="form-check-label" htmlFor="wateredNo">no</label>
                         </div>
                     </div>
                     <div className="form-row">
@@ -40,11 +40,11 @@ function add_note_form(props){
                         </div>
                         <div className="form-check-inline">
                             <input className="form-check-input" type="radio" name="fertilized" id="fertilizedYes" value="fertilizedYes"/>
-                            <label className="form-check-label" for="fertilizedYes">yes</label>
+                            <label className="form-check-label" htmlFor="fertilizedYes">yes</label>
                         </div>
                         <div className="form-check-inline">
                             <input className="form-check-input" type="radio" name="fertilized" id="fertilizedNo" value="fertilizedNo"/>
-                            <label className="form-check-label" for="fertilizedNo">no</label>
+                            <label className="form-check-label" htmlFor="fertilizedNo">no</label>
                         </div>
                     </div>
                     <div className="form-row">
@@ -66,4 +66,4 @@ function add_note_form(props){
     );
 }
 
-export default add_note_form;
+export default AddNoteForm;

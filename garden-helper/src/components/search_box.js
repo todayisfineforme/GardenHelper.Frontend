@@ -1,9 +1,8 @@
 import React from 'react';
+import ResultCard from "./result_card";
 
-class searchResults extends React.Component {
-
+class SearchResults extends React.Component {
     render() {
-
         return (
             <div>
             <div className="search-box">
@@ -12,10 +11,10 @@ class searchResults extends React.Component {
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={(event) => this.handleLogin(event)}>Search</button>
             </div>
-            <result_card/>
+                <ResultCard/>
             </div>
         )
     }
 }
 
-export default searchResults;
+export default SearchResults;

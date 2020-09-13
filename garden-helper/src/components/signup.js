@@ -1,6 +1,5 @@
 import React from 'react';
 import userAction from './userAction';
-import Header from './header';
 
 class Signup extends React.Component {
     constructor(props) {
@@ -45,23 +44,22 @@ class Signup extends React.Component {
     render() {
         return (
             <div>
-              <Header/>
-            <div className="login-box">
-                <h1>signup</h1>
-                <div className="textbox">
-                    <input type="text" placeholder="Username" id='username' name="" value={this.state.username} onChange={event => this.setUsername(event.target.value)} />
+                <div className="login-box">
+                    <h1 className="text-center">New User</h1>
+                    <div className="textbox">
+                        <input type="text" placeholder="Username" id='username' name="" value={this.state.username} onChange={event => this.setUsername(event.target.value)} />
+                    </div>
+                    <div className="textbox">
+                        <input type="text" placeholder="Email" name="" id='email' value={this.state.email} onChange={event => this.setEmail(event.target.value)} />
+                    </div>
+                    <div className="textbox">
+                        <input type="password" placeholder="Password" name="" id='password' value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
+                    </div>
+                    <button type="submit" className="btn btn-secondary btn-block" onClick={(event) => this.handleSubmit(event)}>Submit</button>
+                    <p className="forgot-password text-center">
+                        Already registered <a href="/login">Sign in?</a>
+                    </p>
                 </div>
-                <div className="textbox">
-                    <input type="text" placeholder="email" name="" id='email' value={this.state.email} onChange={event => this.setEmail(event.target.value)} />
-                </div>
-                <div className="textbox">
-                    <input type="password" placeholder="Password" name="" id='password' value={this.state.password} onChange={event => this.setPassword(event.target.value)} />
-                </div>
-                <button type="submit" className="btn btn-primary btn-block" onClick={(event) => this.handleSubmit(event)}>submit</button>
-                <p className="forgot-password text-right">
-                    Already registered <a href="/login">sign in?</a>
-                </p>
-            </div>
             </div>
         )
     }

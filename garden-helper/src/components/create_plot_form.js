@@ -1,6 +1,6 @@
 import React from "react"
 
-function create_plot_form(props) {
+function CreatePlotForm(props) {
     return (
         <form>
             <div className="form-row justify-content-center">
@@ -8,18 +8,18 @@ function create_plot_form(props) {
                     <h3>How large is your plot?</h3>
                 </div>
                 <div className="form-check-inline">
-                    <input type="text" id="plotLength" name="plotLength" maxlength="5" size="3"/>
+                    <input type="text" className="form-control" id="plotLength" name="plotLength" maxLength="5" size="3"/>
                 </div>
                 <div className="form-check-inline">
                     <h5>X</h5>
                 </div>
                 <div className="form-check-inline">
-                    <input type="text" id="plotWidth" name="plotWidth" maxlength="5" size="3"/>
+                    <input type="text" className="form-control" id="plotWidth" name="plotWidth" maxLength="5" size="3"/>
                 </div>
                 <div className="form-check-inline">
                     <div className="input-group">
                         <select className="custom-select" id="areaUnits">
-                            <option selected>Units</option>
+                            <option defaultValue>Units</option>
                             <option value="1">Feet</option>
                             <option value="2">Yards</option>
                             <option value="3">Metres</option>
@@ -43,7 +43,7 @@ function create_plot_form(props) {
                     <h3>How many do you want to plant?</h3>
                 </div>
                 <div className="form-check-inline">
-                    <input type="text" id="numberOfPlants" name="numberOfPlants" maxlength="5" size="3"/>
+                    <input type="text" className="form-control" id="numberOfPlants" name="numberOfPlants" maxLength="5" size="3"/>
                 </div>
             </div>
             <div className="form-row justify-content-center">
@@ -54,4 +54,4 @@ function create_plot_form(props) {
         </form>
     );
 }
-export default create_plot_form;
+export default CreatePlotForm;

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import create_plot_form from "./create_plot_form";
-import create_plot_plant_table from "./create_plot_plant_table";
+import CreatePlotForm from "./create_plot_form";
+import CreatePlotPlantTable from "./create_plot_plant_table";
 import search from './search';
 
-class create_plot extends Component {
+class Create_plot extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,9 +11,9 @@ class create_plot extends Component {
             email: '',
             password: '',
             available_rows: 0,
-            current_plants:[],
-            search_results = {},
-            query = ''
+            current_plants: [],
+            search_results: {},
+            query:' '
         }
     }
 
@@ -36,14 +36,14 @@ class create_plot extends Component {
                         <h1 className="display-3 text-center mt-n5">Plan your Plot!</h1>
                         <hr className="mx-4"/>
                         <div className="container">
-                            <create_plot_form/>
+                            <CreatePlotForm/>
                         </div>
                         <hr className="mx-4"/>
                         <div className="container">
                             <div className="row justify-content-center">
                                 <h4>Currently available vertical rows: {this.state.available_rows}</h4>
                             </div>
-                            <create_plot_plant_table  
+                            <CreatePlotPlantTable  
                             />
                         </div>
                     </div>
@@ -52,4 +52,4 @@ class create_plot extends Component {
         );
     }
 }
-export default create_plot;
+export default Create_plot;
