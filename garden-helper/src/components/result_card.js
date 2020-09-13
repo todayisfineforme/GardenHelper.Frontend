@@ -1,6 +1,6 @@
 import React from 'react';
 
-function result_card(props) {
+function ResultCard(props) {
     return(
         <div className="row cardRow">
         <div className="card">
@@ -15,4 +15,4 @@ function result_card(props) {
         </div>
     );
 }
-export default result_card;
+export default ResultCard;
