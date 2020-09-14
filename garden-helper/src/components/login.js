@@ -40,7 +40,7 @@ class Login extends React.Component {
         try {
             let response = await userAccount.login(this.state.email, this.state.password);
             sessionStorage.setItem('userid', response.data.userid);
-            window.location = '/garden/new';
+            window.location = '/user/gardens';
         } catch (error) {
             let newState = this.getCopyOfState();
             newState.errorMessage = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;

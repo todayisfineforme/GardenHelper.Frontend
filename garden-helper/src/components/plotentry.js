@@ -3,24 +3,32 @@ import React from 'react';
 function PlotEntry(props) {
     return (
         <tr>
-            <td>{props.plot.number}</td>
-            <td>{props.plot.plotName}</td>
-            <td>{props.plot.dimension}</td>
-            <td>{props.plot.plant}</td>
-            <td>
-                <div className='d-flex flex-row justify-content-around'>
-                    <button className='btn btn-dark mx-1 my-1 p-0 w-50' onClick={() => this.getWateringInfo()}>Watering</button>
-                    <button className='btn btn-primary mx-1 my-1 p-0 w-50'onClick={() => this.getFertilizerInfo()}>Fertilizer</button>
+            <td className="align-middle">{props.plot.number}</td>
+            <td className="align-middle"><img className="img-thumbnail plantimage" src={props.plot.plantImageUrl} /></td>
+            <td className="align-middle">{props.plot.plant}</td>
+            <td className="align-middle">{props.plot.plotName}</td>
+            <td className="align-middle">{props.plot.dimension}</td>
+            <td className="align-middle">
+                <div className='d-flex flex-row justify-content-center'>
+                    <button className='btn btn-primary mr-1 my-1 btn-sm' onClick={() => getWateringInfo(props.plot.plotid)}>Water</button>
+                    <button className='btn btn-dark mr-1 my-1 btn-sm' onClick={() => getFertilizerInfo(props.plot.plotid)}>Fertilize</button>
+                    <button className='btn btn-info mr-1 my-1 btn-sm' onClick={() => getActivities(props.plot.plotid)}>Activities</button>
                 </div>
             </td>
         </tr>
     );
 }
-// function getWateringInfo(){
-// window.location='/watering.js';
-// }
 
-// function getFertilizerInfo(){
-// window.locatin='/fertilizer.js';
-// }
+function getWateringInfo(plotId) {
+    window.location = `/garden/plot/watering/${plotId}`;
+}
+
+function getFertilizerInfo(plotId) {
+    window.location = `/garden/plot/fertilizer/${plotId}`;
+}
+
+function getActivities(plotId) {
+    window.location = `/garden/plot/activities/${plotId}`;
+}
+
 export default PlotEntry;

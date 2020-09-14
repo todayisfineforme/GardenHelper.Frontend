@@ -1,6 +1,7 @@
 import React from 'react';
 import MainNavigation from './mainnavigation';
 import gardenAction from './gardenactions';
+import PlantSearchResults from './searchresults';
 
 class NewPlot extends React.Component {
     constructor(props) {
@@ -12,9 +13,22 @@ class NewPlot extends React.Component {
             width: '',
             sizeunits: '',
             quantity: '',
-            plantName: '',
-            errorMessage: ''
+            plant: '',
+            errorMessage: '',
+            plantsearch: {
+                isSearchRequested: false,
+                searchterm: '',
+                plantSelected: (p) => this.handlePlantSearchSelected(p)
+            }
         }
+    }
+
+    handlePlantSearchSelected(plant) {
+        let newState = this.getCopyOfState();
+        newState.plantsearch.isSearchRequested = false;
+        newState.plantsearch.searchterm = plant.plantName;
+        newState.plant = plant;
+        this.setState(newState);
     }
 
     setPlotName(plotName) {
@@ -35,9 +49,9 @@ class NewPlot extends React.Component {
         this.setState(newState);
     }
 
-    setPlantName(plantName) {
+    setPlantSearchName(plantName) {
         let newState = this.getCopyOfState();
-        newState.plantName = plantName;
+        newState.plantsearch.searchterm = plantName;
         this.setState(newState);
     }
 
@@ -55,11 +69,13 @@ class NewPlot extends React.Component {
 
     async componentDidMount() {
         let response = await gardenAction.getGarden();
-        let garden = response.data;
-        let newState = this.getCopyOfState();
-        newState.garden = garden.name;
+        if (response) {
+            let garden = response.data;
+            let newState = this.getCopyOfState();
+            newState.garden = garden.name;
 
-        this.setState(newState);
+            this.setState(newState);
+        }
     }
 
     getCopyOfState() {
@@ -70,19 +86,28 @@ class NewPlot extends React.Component {
             quantity: this.state.quantity,
             length: this.state.length,
             width: this.state.width,
-            sizeunits: this.state.sizeunits
+            sizeunits: this.state.sizeunits,
+            plantsearch: this.state.plantsearch,
+            plant: this.state.plant
         }
     }
 
+    handleSearchClicked(event) {
+        event.preventDefault();
+        let newState = this.getCopyOfState();
+        newState.plantsearch.isSearchRequested = true;
+        this.setState(newState);
+    }
 
     async handleSubmit(event) {
         event.preventDefault();
 
         try {
+            this.state.plant.quantity = this.state.quantity;
+
             let plotInfo = {
                 plotName: this.state.plotName,
-                plantName: this.state.plantName,
-                quantity: this.state.quantity,
+                plant: this.state.plant,
                 length: this.state.length,
                 width: this.state.width,
                 sizeunits: this.state.sizeunits
@@ -90,7 +115,7 @@ class NewPlot extends React.Component {
             let response = await gardenAction.createNewPlot(plotInfo);
             switch (response.status) {
                 case 200:
-                    window.location = '/garden/plot/add';
+                    window.location = '/garden/plots';
                     break;
                 case 500:
                     let newState = this.getCopyOfState();
@@ -141,7 +166,13 @@ class NewPlot extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <label className="">What do you want to plant?</label>
-                                        <input type="text" id="plotname" placeholder="Search" className="form-control" value={this.state.plantName} onChange={(e) => this.setPlantName(e.target.value)} />
+                                        <div className="input-group">
+                                            <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="Find plant" value={this.state.plantsearch.searchterm} onChange={(e) => this.setPlantSearchName(e.target.value)} />
+                                            <div className="input-group-append">
+                                                <button className="btn btn-secondary input-group-button" onClick={(e) => this.handleSearchClicked(e)}>search</button>
+                                            </div>
+                                        </div>
+                                        {this.state.plantsearch.isSearchRequested ? <PlantSearchResults plantsearch={this.state.plantsearch} /> : <span />}
                                     </div>
                                     <div className="form-group">
                                         <label className="">How many do you want to plant?</label>

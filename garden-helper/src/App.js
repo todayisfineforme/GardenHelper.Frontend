@@ -8,7 +8,10 @@ import NewPlot from './components/newplot';
 import Plots from './components/plots';
 import Watering from './components/watering';
 import Fertilizer from './components/fertilizer';
-
+import Gardens from './components/gardens';
+import StartGardenPrompt from './components/startgardenprompt';
+import Activities from './components/plotactivities';
+import Profile from './components/profile';
 
 
 export default function App() {
@@ -16,11 +19,17 @@ export default function App() {
         <Switch>
             <Route exact path='/' component={Signup} />
             <Route exact path='/login' component={Login} />
+            <Route exact path='/user/gardens' component={Gardens} />
             <Route exact path='/garden/new' component={NewGarden} />
+            <Route exact path='/garden/prompt' component={StartGardenPrompt} />
             <Route exact path='/garden/plot/add' component={NewPlot} />
             <Route exact path='/garden/plots' component={Plots} />
-            <Route exact path='/garden/plot/watering' component={Watering} />
-            <Route exact path='/garden/plot/fertilizer' component={Fertilizer} />
+            <Route exact path='/garden/plot/watering/:plotid' component={Watering} />
+            <Route exact path='/garden/plot/fertilizer/:plotid' component={Fertilizer} />
+            <Route exact path='/garden/plot/activities/:plotid' component={Activities} />
+            <Route exact path='/api/profile/add' component={Profile} />
+
+
         </Switch>
     );
 }

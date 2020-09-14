@@ -1,63 +1,46 @@
 import React from 'react';
 import MainNavigation from './mainnavigation';
-// import gardenAction from './gardenactions';
-
+import gardenAction from './gardenactions';
+import Moment from 'react-moment';
 
 class Watering extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: '',
+            date: new Date(),
             quantity: '',
             note: ''
         }
+        if (props.match.params.plotid)
+            this.state.plotid = props.match.params.plotid
     }
-    setDate(date){
-        let newState = this.getCopyOfState();
-        newState.date = date;
-        this.setState(newState);
-     }
 
-     setQuantity(quantity){
+    setQuantity(quantity) {
         let newState = this.getCopyOfState();
         newState.quantity = quantity;
         this.setState(newState);
-     }
-     setNote(note){
+    }
+
+    setNote(note) {
         let newState = this.getCopyOfState();
         newState.note = note;
         this.setState(newState);
-     }
+    }
 
-     getCopyOfState() {
+    getCopyOfState() {
         return {
             date: this.state.date,
             quantity: this.state.quantity,
-            note: this.state.note
-        }   
+            note: this.state.note,
+            plotid: this.state.plotid
+        }
     }
-    // async handleSubmit(event) {
-    //     event.preventDefault();
 
-    //     try {
-    //         let response = await gardenAction.createNewWatering(this.state.gardenName);
-    //         switch (response.status) {
-    //             case 200:
-    //                 sessionStorage.setItem('gardenid', response.data.gardenid);
-    //                 break;
-    //             case 500:
-    //                 let newState = this.getCopyOfState();
-    //                 newState.errorMessage = `Unable to save watering information`;
-    //                 break;
-    //             default:
-    //                 console.error("Unexpected response status came in. Check out what's going on.");
-    //         }
-    //     } catch (error) {
-    //         let newState = this.getCopyOfState();
-    //         newState.errorMessage = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;
-    //         this.setState(newState);
-    //     }
-    // }
+    async handleSubmit(event) {
+        event.preventDefault();
+        await gardenAction.recordWatering(this.state.plotid, this.state.date, this.state.quantity, this.state.note);
+        window.location = '/garden/plots';
+    }
 
     render() {
         return (
@@ -66,20 +49,19 @@ class Watering extends React.Component {
                 <div className="row h-100">
                     <div className="col-md-12 d-flex justify-content-center">
                         <div className="card w-75 mt-2 mb-5 my-2 pt-5 overflow-auto d-flex maincardcontainer">
-                            <div className="card-body mx-auto mt-5">
+                            <div className="card-body w-75 mx-auto mt-5">
                                 <h3 className="card-title">Watering Information</h3>
                                 <form id="form">
                                     <div className="form-group">
                                         <div className="form-group">
-                                            <label>Date</label>
-                                            <input type="text" id="fullname" className="form-control" value={this.state.date} onChange={(e) => this.setDate(e.target.value)} />
+                                            <label>Recording watering for</label> <Moment date={this.state.date} format="MM/DD/YYYY hh:mm A" />
                                         </div>
                                         <div className="form-group">
                                             <label>Quantity</label>
                                             <input type="text" id="email" className="form-control" value={this.state.quantity} onChange={(e) => this.setQuantity(e.target.value)} />
                                         </div>
                                         <div className="form-group">
-                                            <label>Note</label>
+                                            <label>Notes</label>
                                             <textarea className="form-control" id="messages" rows="3" value={this.state.note} onChange={(e) => this.setNote(e.target.value)}></textarea>
                                         </div>
                                         <button type="submit" className="btn btn-dark mt-4 mx-auto w-100" onClick={(e) => this.handleSubmit(e)}>save</button>
