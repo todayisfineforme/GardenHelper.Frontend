@@ -16,11 +16,11 @@ function PlotEntry(props) {
         </tr>
     );
 }
-function getWateringInfo(){
-window.location='/watering.js';
-}
+// function getWateringInfo(){
+// window.location='/watering.js';
+// }
 
-function getFertilizerInfo(){
-window.locatin='/fertilizer.js';
-}
+// function getFertilizerInfo(){
+// window.locatin='/fertilizer.js';
+// }
 export default PlotEntry;

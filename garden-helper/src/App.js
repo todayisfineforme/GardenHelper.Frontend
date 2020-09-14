@@ -8,14 +8,6 @@ import NewPlot from './components/newplot';
 import Plots from './components/plots';
 import Watering from './components/watering';
 import Fertilizer from './components/fertilizer';
-import Signup from './components/signup';
-import Plot from './components/plot_container';
-import Create from './components/create_plot_container';
-import './styles/reset.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/style.css';
-
-
 
 
 
