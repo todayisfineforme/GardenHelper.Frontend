@@ -8,7 +8,6 @@ import NewPlot from './components/newplot';
 import Plots from './components/plots';
 import Watering from './components/watering';
 import Fertilizer from './components/fertilizer';
-import Signup from './components/signup';
 import Plot from './components/plot_container';
 import Create from './components/create_plot_container';
 import './styles/reset.css';
@@ -29,6 +28,7 @@ export default function App() {
             <Route exact path='/garden/plots' component={Plots} />
             <Route exact path='/garden/plot/watering' component={Watering} />
             <Route exact path='/garden/plot/fertilizer' component={Fertilizer} />
+            <Route exact path='/plot' component={Plot} />
         </Switch>
     );
 }

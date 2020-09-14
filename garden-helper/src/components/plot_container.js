@@ -25,7 +25,7 @@ class PlotContainer extends Component {
                 },
                 {
                     common_name: "Potatoes",
-                    img_url:"https://bs.floristic.org/image/o/https://bs.floristic.org/image/o/95a0197b33f8efe2ea7a0d25f84476415779a4b5",
+                    img_url:"https://bs.floristic.org/image/o/95a0197b33f8efe2ea7a0d25f84476415779a4b5",
                     rows: 2,
                     number_planted: 8,
                     id: 182597
@@ -41,22 +41,22 @@ class PlotContainer extends Component {
             notes:[
                 {
                     date: "08.26.2020",
-                    watered: true,
-                    fertilized: true,
+                    watered: "yes",
+                    fertilized: "yes",
                     fertilizer_used: "Miracle-Gro",
                     note: "Leaves canoeing, may need wind break"
                 },
                 {
                     date: "08.28.2020",
-                    watered: false,
-                    fertilized: false,
+                    watered: "no",
+                    fertilized: "no",
                     fertilizer_used: "",
                     note: "wind break installed"
                 },
                 {
                     date: "08.30.2020",
-                    watered: true,
-                    fertilized: true,
+                    watered: "yes",
+                    fertilized: "yes",
                     fertilizer_used: "Miracle-Gro",
                     note: "leaves recovered, fruit buds appeared"
                 }
@@ -66,28 +66,41 @@ class PlotContainer extends Component {
 
 
     render() {
+        const groupLoop = this.state.plot.plants.length
+        let groups = [];
+        for (let i=0; i< groupLoop; i++){
+            groups.push(
+                <PlotRowGroup
+                    plants={this.state.plot.plants[i]}
+                    key={i}
+                />
+            )
+        }
+
         return(
             <div className="row">
                 <div className="col-9">
                     <div className="jumbotron jumbotron-fluid m-3 rounded">
-                        <h1 className="display-3 text-center mt-n5">{this.props.plot_name}</h1>
+                        <h2 className="display-4 text-center mt-n5">{this.state.plot.plot_name}</h2>
                         <hr className="mx-4"/>
                         <div className="container-fluid">
                             <table>
-                                <tbody>
-                                    <PlotRowGroup
-                                        plants={this.state.plot.plants}
-                                    />
-                                </tbody>
+                                {groups}
                             </table>
-                            {/* todo logic to determine how many rows are displayed */}
                             <hr className="mx-4"/>
-                            <NotesContainer/>
+                            <NotesContainer
+                                notes={this.state.plot.notes}
+                            />
                         </div>
                     </div>
                 </div>
                 <div className="col-3">
-                    <PlotDetailCard/>
+                    <PlotDetailCard
+                        location={this.state.plot.plot_location}
+                        plot_size={this.state.plot.plot_size}
+                        purpose={this.state.plot.plot_purpose}
+                        enviroment={this.state.plot.plot_enviroment}
+                    />
                 </div>
             </div>
         );
