@@ -4,7 +4,7 @@ function PlotEntry(props) {
     return (
         <tr>
             <td className="align-middle">{props.plot.number}</td>
-            <td className="align-middle"><image className="img-thumbnail plantimage" src={props.plot.plantImageUrl} /></td>
+            <td className="align-middle"><img className="img-thumbnail plantimage" src={props.plot.plantImageUrl} /></td>
             <td className="align-middle">{props.plot.plant}</td>
             <td className="align-middle">{props.plot.plotName}</td>
             <td className="align-middle">{props.plot.dimension}</td>
