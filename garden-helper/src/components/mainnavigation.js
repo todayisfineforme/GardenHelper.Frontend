@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function MainNavigation(props) {
     return (
@@ -9,23 +10,23 @@ function MainNavigation(props) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a>
+                                <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="/garden/plots">Gardens<span className="sr-only">(current)</span></a>
+                                <Link className="nav-link" to="/garden/plots">Gardens<span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="/garden/new">New Garden<span className="sr-only">(current)</span></a>
+                                <Link className="nav-link" to="/garden/new">New Garden<span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="/garden/plot/add">Add Plot<span className="sr-only">(current)</span></a>
+                                <Link className="nav-link" to="/garden/plot/add">Add Plot<span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="/garden/plots">My Plots<span className="sr-only">(current)</span></a>
+                                <Link className="nav-link" to="/garden/plots">My Plots<span className="sr-only">(current)</span></Link>
                             </li>
                         </ul>
                         <div className="nav-item active align-self-end">
-                                <a className="nav-link text-white"  href="/api/profile/add">Profile<span className="sr-only">(current)</span></a>
+                            <Link className="nav-link text-white" to="/api/profile/add">Profile<span className="sr-only">(current)</span></Link>
                         </div>
                     </div>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
