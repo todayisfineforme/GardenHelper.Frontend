@@ -44,8 +44,9 @@ class Contact extends React.Component {
         }
         await mailslurp.sendEmail(inbox.id, options);
         this.resetForm();
-        alert('message received')
-      
+        alert('message received');
+        window.location = '/';
+
     }
 
     render() {
