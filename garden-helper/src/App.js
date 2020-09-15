@@ -30,6 +30,9 @@ export default function App() {
             <Route exact path='/garden/plot/activities/:plotid' component={Activities} />
             <Route exact path='/api/profile/add' component={Profile} />
             <Route exact path='/contact' component={Contact} />
+            
+
+
         </Switch>
     );
 }
