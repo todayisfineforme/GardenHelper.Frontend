@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Project-3-Frontend.github.io/garden-helper/static/css/main.649c8898.chunk.css",
-    "main.js": "/Project-3-Frontend.github.io/garden-helper/static/js/main.9740123a.chunk.js",
-    "main.js.map": "/Project-3-Frontend.github.io/garden-helper/static/js/main.9740123a.chunk.js.map",
-    "runtime-main.js": "/Project-3-Frontend.github.io/garden-helper/static/js/runtime-main.313bbb29.js",
-    "runtime-main.js.map": "/Project-3-Frontend.github.io/garden-helper/static/js/runtime-main.313bbb29.js.map",
-    "static/js/2.6ca77f4a.chunk.js": "/Project-3-Frontend.github.io/garden-helper/static/js/2.6ca77f4a.chunk.js",
-    "static/js/2.6ca77f4a.chunk.js.map": "/Project-3-Frontend.github.io/garden-helper/static/js/2.6ca77f4a.chunk.js.map",
-    "index.html": "/Project-3-Frontend.github.io/garden-helper/index.html",
-    "precache-manifest.f455ed93569adf55d276981aaa5f7590.js": "/Project-3-Frontend.github.io/garden-helper/precache-manifest.f455ed93569adf55d276981aaa5f7590.js",
-    "service-worker.js": "/Project-3-Frontend.github.io/garden-helper/service-worker.js",
-    "static/css/main.649c8898.chunk.css.map": "/Project-3-Frontend.github.io/garden-helper/static/css/main.649c8898.chunk.css.map",
-    "static/js/2.6ca77f4a.chunk.js.LICENSE.txt": "/Project-3-Frontend.github.io/garden-helper/static/js/2.6ca77f4a.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/Project-3-Frontend.github.io/garden-helper/static/media/hero2.1e71e984.jpg"
+    "main.css": "/Project-3-Frontend/static/css/main.50708a3b.chunk.css",
+    "main.js": "/Project-3-Frontend/static/js/main.9740123a.chunk.js",
+    "main.js.map": "/Project-3-Frontend/static/js/main.9740123a.chunk.js.map",
+    "runtime-main.js": "/Project-3-Frontend/static/js/runtime-main.fb3d55c1.js",
+    "runtime-main.js.map": "/Project-3-Frontend/static/js/runtime-main.fb3d55c1.js.map",
+    "static/js/2.6ca77f4a.chunk.js": "/Project-3-Frontend/static/js/2.6ca77f4a.chunk.js",
+    "static/js/2.6ca77f4a.chunk.js.map": "/Project-3-Frontend/static/js/2.6ca77f4a.chunk.js.map",
+    "index.html": "/Project-3-Frontend/index.html",
+    "precache-manifest.c56784c3bf56d6158ddde351c789b49f.js": "/Project-3-Frontend/precache-manifest.c56784c3bf56d6158ddde351c789b49f.js",
+    "service-worker.js": "/Project-3-Frontend/service-worker.js",
+    "static/css/main.50708a3b.chunk.css.map": "/Project-3-Frontend/static/css/main.50708a3b.chunk.css.map",
+    "static/js/2.6ca77f4a.chunk.js.LICENSE.txt": "/Project-3-Frontend/static/js/2.6ca77f4a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Project-3-Frontend/static/media/hero2.1e71e984.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.313bbb29.js",
+    "static/js/runtime-main.fb3d55c1.js",
     "static/js/2.6ca77f4a.chunk.js",
-    "static/css/main.649c8898.chunk.css",
+    "static/css/main.50708a3b.chunk.css",
     "static/js/main.9740123a.chunk.js"
   ]
 }
