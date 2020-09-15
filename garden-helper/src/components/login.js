@@ -1,6 +1,7 @@
 import React from 'react';
 import AccountNavigation from './accountnavigation';
 import userAccount from './userAccount';
+import { Redirect } from "react-router-dom";
 
 class Login extends React.Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
-            errorMessage: ''
+            errorMessage: '',
+            redirect: false
         }
     }
 
@@ -29,27 +31,28 @@ class Login extends React.Component {
             email: this.state.email,
             password: this.state.password,
             confirmPassword: this.state.confirmPassword,
-            errorMessage: this.state.errorMessage
+            errorMessage: this.state.errorMessage,
+            redirect: this.state.redirect
         }
     }
 
 
     async handleSubmit(event) {
         event.preventDefault();
+        let newState = this.getCopyOfState();
 
         try {
             let response = await userAccount.login(this.state.email, this.state.password);
             sessionStorage.setItem('userid', response.data.userid);
-            window.location = '/user/gardens';
+            newState.redirect = true;
         } catch (error) {
-            let newState = this.getCopyOfState();
             newState.errorMessage = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;
-            this.setState(newState);
         }
+        this.setState(newState);
     }
 
     render() {
-        return (
+        return this.state.redirect ? <Redirect to="/user/gardens"/> : (
             <div className="container-fliud h-100 hero-image hero-image2">
                 <AccountNavigation />
                 <div className="row h-100">

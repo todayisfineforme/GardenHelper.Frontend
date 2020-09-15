@@ -1,5 +1,6 @@
 import React from 'react';
 import { MailSlurp } from "mailslurp-client";
+import { Redirect } from 'react-router-dom';
 const mailslurp = new MailSlurp({ apiKey: "af09981b8affd4ed72c06191454258b498d6f3196de5bdf9fc25f57e5acd5cb3" });
 
 class Contact extends React.Component {
@@ -8,26 +9,41 @@ class Contact extends React.Component {
         this.state = {
             name: '',
             email: '',
-            message: ''
+            message: '',
+            redirect: false
         }
     }
 
 
     onNameChange(event) {
-        this.setState({ name: event.target.value })
+        let newState = this.getCopyOfState();
+        newState.name = event.target.value;
+        this.setState(newState);
     }
 
     onEmailChange(event) {
-        this.setState({ email: event.target.value })
+        let newState = this.getCopyOfState();
+        newState.email = event.target.value;
+        this.setState(newState);
     }
 
     onMessageChange(event) {
-        this.setState({ message: event.target.value })
+        let newState = this.getCopyOfState();
+        newState.message = event.target.value;
+        this.setState(newState);
     }
 
+    getCopyOfState(){
+        return {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message,
+            redirect: this.state.redirect
+        }
+    }
     resetForm() {
 
-        this.setState({ name: '', email: '', message: '' })
+        this.setState({ name: '', email: '', message: '', redirect: true })
     }
 
     async handleSubmit(event) {
@@ -43,14 +59,12 @@ class Contact extends React.Component {
                 My email is: ${this.state.email}`
         }
         await mailslurp.sendEmail(inbox.id, options);
-        this.resetForm();
         alert('message received');
-        window.location = '/';
-
+        this.resetForm();
     }
 
     render() {
-        return (
+        return this.state.redirect ? <Redirect to="/"/> : (
             <div className="container-fluid h-100 mainpagesbackground">
                 <div className="row h-100">
                     <div className="col-md-12 mt-5 d-flex justify-content-center">
