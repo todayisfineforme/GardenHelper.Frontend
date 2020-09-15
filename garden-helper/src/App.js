@@ -12,6 +12,7 @@ import Gardens from './components/gardens';
 import StartGardenPrompt from './components/startgardenprompt';
 import Activities from './components/plotactivities';
 import Profile from './components/profile';
+import Contact from './components/contact';
 
 
 export default function App() {
@@ -28,6 +29,8 @@ export default function App() {
             <Route exact path='/garden/plot/fertilizer/:plotid' component={Fertilizer} />
             <Route exact path='/garden/plot/activities/:plotid' component={Activities} />
             <Route exact path='/api/profile/add' component={Profile} />
+            <Route exact path='/contact' component={Contact} />
+            
 
 
         </Switch>

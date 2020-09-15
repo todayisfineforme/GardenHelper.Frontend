@@ -23,13 +23,9 @@ function MainNavigation(props) {
                             <li className="nav-item active">
                                 <a className="nav-link" href="/garden/plots">My Plots<span className="sr-only">(current)</span></a>
                             </li>
-                            {/* <li><a className="nav-item active" href="/garden/new">New Garden</a></li>
-                            <li><a className="nav-item" href="/garden/plot/add">Add Plot To Current Garden</a></li>
-                            <li><a className="nav-item" href="/garden/plots">My Gardens</a></li>
-                            <li><a className="nav-item" href="/garden/plots">My Plots</a></li> */}
                         </ul>
-                        <div className="align-self-end">
-                            <span className='text-white' href="/api/profile/add">Profile</span>
+                        <div className="nav-item active align-self-end">
+                                <a className="nav-link text-white"  href="/api/profile/add">Profile<span className="sr-only">(current)</span></a>
                         </div>
                     </div>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
