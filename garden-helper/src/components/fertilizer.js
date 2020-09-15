@@ -2,6 +2,7 @@ import React from 'react';
 import MainNavigation from './mainnavigation';
 import gardenAction from './gardenactions';
 import Moment from 'react-moment';
+import { Redirect } from 'react-router-dom';
 
 class Fertilizer extends React.Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class Fertilizer extends React.Component {
         this.state = {
             date: new Date(),
             name: '',
-            note: ''
+            note: '',
+            redirect: false
         }
         if (props.match.params.plotid)
             this.state.plotid = props.match.params.plotid
@@ -32,18 +34,21 @@ class Fertilizer extends React.Component {
             date: this.state.date,
             name: this.state.name,
             note: this.state.note,
-            plotid: this.state.plotid
+            plotid: this.state.plotid,
+            redirect: this.state.redirect
         }
     }
 
     async handleSubmit(event) {
         event.preventDefault();
         await gardenAction.recordFertilization(this.state.plotid, this.state.date, this.state.name, this.state.note);
-        window.location = '/garden/plots';
+        let newState = this.getCopyOfState();
+        newState.redirect = true;
+        this.setState(newState);
     }
 
     render() {
-        return (
+        return this.state.redirect ? <Redirect to="/garden/plots" /> :  (
             <div className="container-fluid h-100 mainpagesbackground">
                 <MainNavigation />
                 <div className="row h-100">

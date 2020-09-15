@@ -1,13 +1,15 @@
 import React from 'react';
 import MainNavigation from './mainnavigation';
 import gardenAction from './gardenactions';
+import { Redirect } from 'react-router-dom';
 
 class NewGarden extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             gardenName: '',
-            errorMessage:''
+            errorMessage: '',
+            redirect: false
         }
     }
 
@@ -19,36 +21,36 @@ class NewGarden extends React.Component {
 
     getCopyOfState() {
         return {
-            gardenName: this.state.gardenName
+            gardenName: this.state.gardenName,
+            redirect: this.state.redirect
         }
     }
 
     async handleSubmit(event) {
         event.preventDefault();
 
+        let newState = this.getCopyOfState();
         try {
             let response = await gardenAction.createNewGarden(this.state.gardenName);
             switch (response.status) {
                 case 200:
                     sessionStorage.setItem('gardenid', response.data.gardenid);
-                    window.location = '/garden/plot/add';
+                    newState.redirect = true;
                     break;
                 case 500:
-                    let newState = this.getCopyOfState();
                     newState.errorMessage = `Unable to save garden`;
                     break;
                 default:
                     console.error("Unexpected response status came in. Check out what's going on.");
             }
         } catch (error) {
-            let newState = this.getCopyOfState();
             newState.errorMessage = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;
-            this.setState(newState);
         }
+        this.setState(newState);
     }
 
     render() {
-        return (
+        return this.state.redirect ? <Redirect to="/garden/plot/add" /> : (
             <div className="container-fliud h-100 mainpagesbackground overflow-auto">
                 <MainNavigation />
                 <div className="row h-100">

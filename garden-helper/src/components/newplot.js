@@ -2,6 +2,7 @@ import React from 'react';
 import MainNavigation from './mainnavigation';
 import gardenAction from './gardenactions';
 import PlantSearchResults from './searchresults';
+import { Redirect } from 'react-router-dom';
 
 class NewPlot extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class NewPlot extends React.Component {
             quantity: '',
             plant: '',
             errorMessage: '',
+            redirect:false,
             plantsearch: {
                 isSearchRequested: false,
                 searchterm: '',
@@ -88,7 +90,8 @@ class NewPlot extends React.Component {
             width: this.state.width,
             sizeunits: this.state.sizeunits,
             plantsearch: this.state.plantsearch,
-            plant: this.state.plant
+            plant: this.state.plant,
+            redirect:this.state.redirect
         }
     }
 
@@ -102,6 +105,7 @@ class NewPlot extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
 
+        let newState = this.getCopyOfState();
         try {
             this.state.plant.quantity = this.state.quantity;
 
@@ -115,10 +119,9 @@ class NewPlot extends React.Component {
             let response = await gardenAction.createNewPlot(plotInfo);
             switch (response.status) {
                 case 200:
-                    window.location = '/garden/plots';
+                    newState.redirect = true;
                     break;
                 case 500:
-                    let newState = this.getCopyOfState();
                     newState.errorMessage = `Unable to save plot`;
                     break;
                 default:
@@ -127,12 +130,12 @@ class NewPlot extends React.Component {
         } catch (error) {
             let newState = this.getCopyOfState();
             newState.errorMessage = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;
-            this.setState(newState);
         }
+        this.setState(newState);
     }
 
     render() {
-        return (
+        return this.state.redirect ? <Redirect to="/garden/plots" /> : (
             <div className="container-fluid h-100 mainpagesbackground">
                 <MainNavigation />
                 <div className="row h-100">

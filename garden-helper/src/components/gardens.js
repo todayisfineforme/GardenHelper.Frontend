@@ -2,21 +2,23 @@ import React from 'react';
 import MainNavigation from './mainnavigation';
 import gardenAction from './gardenactions';
 import GardenEntry from './gardenentry';
+import { Redirect } from 'react-router-dom';
 
 class Plot extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gardens: []
+            gardens: [],
+            redirect: false
         }
     }
 
     async componentDidMount() {
         let response = await gardenAction.getUserGardens();
+        let newState = this.getCopyOfState();
         if (response) {
             let gardens = response.data;
             if (gardens.length > 0) {
-                let newState = this.getCopyOfState();
                 newState.gardens = [];
 
                 for (let i = 0; i < gardens.length; i++) {
@@ -28,21 +30,22 @@ class Plot extends React.Component {
                         gardenid: garden._id
                     });
                 }
-                this.setState(newState);
             } else {
-                window.location='/garden/prompt'
+                newState.redirect = true;
             }
         }
+        this.setState(newState);
     }
 
     getCopyOfState() {
         return {
-            gardens: []
+            gardens: [],
+            redirect: this.state.redirect
         }
     }
 
     render() {
-        return (
+        return this.state.redirect ? <Redirect to="/garden/prompt" /> : (
             <div className="container-fluid h-100 mainpagesbackground">
                 <MainNavigation />
                 <div className="row h-100">

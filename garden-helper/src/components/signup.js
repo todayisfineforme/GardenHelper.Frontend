@@ -1,6 +1,7 @@
 import React from 'react';
 import AccountNavigation from './accountnavigation';
 import userAccount from './userAccount';
+import { Redirect } from "react-router-dom";
 
 class Signup extends React.Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class Signup extends React.Component {
             email: '',
             password: '',
             confirmPassword: '',
-            validationError: ''
+            validationError: '',
+            redirect: false
         }
     }
 
@@ -52,21 +54,19 @@ class Signup extends React.Component {
         event.preventDefault();
 
         let errors = this.validateInputs();
-
+        let newState = this.getCopyOfState();
+        
         if (errors.length > 0) {
-            let newState = this.getCopyOfState();
             newState.validationError = errors[0];
-            this.setState(newState);
         } else {
             try {
                 await userAccount.signup(this.state.username, this.state.email, this.state.password);
-                window.location = '/login';
+                newState.redirect = true;
             } catch (error) {
-                let newState = this.getCopyOfState();
                 newState.validationError = `Somthing went terribly wrong!. It's not your fault. It's us. We're working to resolve it now`;
-                this.setState(newState);
             }
         }
+        this.setState(newState);
     }
 
     validateInputs() {
@@ -80,8 +80,10 @@ class Signup extends React.Component {
         return errors;
     }
 
+    
     render() {
-        return (
+
+        return this.state.redirect ? <Redirect to="/login"/> : (
             <div className="container-fliud h-100 hero-image hero-image2">
                 <AccountNavigation />
                 <div className="row h-100">
