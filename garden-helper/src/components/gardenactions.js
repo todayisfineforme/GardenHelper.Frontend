@@ -1,6 +1,8 @@
 import axios from 'axios';
 const baseurl = 'https://garden-helper.herokuapp.com';
 
+const baseurl = 'https://garden-helper.herokuapp.com';
+
 const gardenActions = {
     createNewGarden: (gardenName) => {
 
