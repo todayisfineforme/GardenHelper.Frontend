@@ -1,29 +1,25 @@
-# Project-3-Frontend
+# GardenHelper Frontend 
 
-Foobar is a Python library for dealing with word pluralization.
+Garden Helper is a React app that allows users to plan and store their ideal gardens. utilizes the Trefle API to provide plant information.
 
 ## Installation
-
-Use the node package manager [npm](https://nodejs.org/en/) to install foobar.
+clone repo then 
 
 ```bash
-npm install foobar
+npm install
 ```
+to install dependencies
 
 ## Usage
 
 ```node.js
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+npm start
 ```
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
-
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
